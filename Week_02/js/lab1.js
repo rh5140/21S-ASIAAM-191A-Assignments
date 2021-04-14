@@ -1,5 +1,5 @@
 
-
+/*
 // Fetch method
 fetch("js/lab1.geojson")
     .then(response => {
@@ -30,3 +30,4 @@ function customMarker (feature, latlng) {
   let myLayerOptions = {
     pointToLayer: customMarker
   }
+*/

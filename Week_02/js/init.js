@@ -41,7 +41,23 @@ function customMarker (feature, latlng) {
 return L.circleMarker(latlng, { color: feature.properties.color })
 }
 
+
+function createCustomIcon (feature, latlng) {
+    let myIcon = L.icon({
+      iconUrl: './images/sharknado_stars.png',
+      //shadowUrl: './images/sharknado_drawn.png',
+      iconSize:     [25, 25], // width and height of the image in pixels
+      //shadowSize:   [35, 20], // width, height of optional shadow image
+      iconAnchor:   [12, 12], // point of the icon which will correspond to marker's location
+      //shadowAnchor: [12, 6],  // anchor point of the shadow. should be offset
+      popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    })
+    return L.marker(latlng, { icon: myIcon })
+  }
+
+
+
 // create an options object
 let myLayerOptions = {
-pointToLayer: customMarker
+pointToLayer: createCustomIcon
 }

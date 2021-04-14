@@ -2,6 +2,10 @@ html, body {
     padding: 5px;
  }
 
+ a {
+     color:rgb(9, 84, 150);
+ }
+
  body {
      display: grid;
      grid-template-rows: .1fr .30fr .60fr .05fr;
@@ -10,7 +14,7 @@ html, body {
      justify-content: center;
 
      font-family: Verdana;
-     color:rgb(9, 84, 150);
+     color:darkblue;
 
      text-align: center;
      background-color: rgb(255, 255, 255);
