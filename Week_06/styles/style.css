@@ -58,6 +58,7 @@ button{
 }
 
 #contents{
+    height:90vh;
     grid-area: contentspanel;
     display: grid;
     grid-template-columns: repeat(2,1fr);
