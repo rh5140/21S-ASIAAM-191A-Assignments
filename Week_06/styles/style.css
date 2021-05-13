@@ -1,9 +1,8 @@
 body{
     background-color: rgb(243, 210, 228);
     display:grid;
-    grid-template-rows: 1fr 8fr 8fr;
     grid-template-columns: 4fr 8fr 2fr; 
-    grid-template-areas: "header descriptionpanel ." "survey mappanel contentspanel" "footer . ." /* this creates one row with map panel on the left and sidepanel on the right */
+    grid-template-areas: "header descriptionpanel topright" "survey mappanel contentspanel" "footer botmid botright" /* this creates one row with map panel on the left and sidepanel on the right */
 }
 
 header{
@@ -33,6 +32,18 @@ button{
     text-align: center;
     font-size: large;
     color: #618700;
+}
+
+#topright{
+    grid-area: topright;
+}
+
+#botmid{
+    grid-area: botmid;
+}
+
+#botright{
+    grid-area: botright;
 }
 
 #map{
