@@ -26,6 +26,11 @@ button{
     color:#9b0575;
 }
 
+button:hover{
+    background-color: #9b0575;
+    color: rgb(235, 250, 219);
+}
+
 #description{
     grid-area: descriptionpanel;
     font-family:Arial, Helvetica, sans-serif;

@@ -44,7 +44,7 @@ function createButtons(lat,lng,title){
 function addCustomMarker(lat, long, msg, name) {
     console.log(name);
     let message = msg + ' -' + name
-    L.marker([lat, long]).addTo(map).bindPopup(message)
+    L.marker([lat, long]).addTo(map).bindPopup(message, "<h1><img src = 'images/banner.png'></h1>")
     createFunction(lat, long, msg)
     return message
 }

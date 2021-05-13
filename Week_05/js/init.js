@@ -16,7 +16,7 @@ fetch(url)
     })
 
 function addMarker(data){
-    L.marker([data.lat,data.long]).addTo(map).bindPopup(`<h2>${data.location}</h2>${data.story}`)
+    L.marker([data.lat,data.long]).addTo(map).bindPopup(`<h2>${data.location}</h2>${data.story}`,'<img src = https://www.at-languagesolutions.com/wp-content/uploads/2016/06/http-1.jpg')
     return data.timestamp    
 }
 
