@@ -4,15 +4,6 @@ const map = L.map('map').setView([34.0709, -118.444], 5);
 // const url = "https://spreadsheets.google.com/feeds/list/1upD99bKWIO68jL8MKWV67KE-_H_TVn2bCwqyQkqNsBw/oxw5dh3/public/values?alt=json"
 const url = "https://spreadsheets.google.com/feeds/list/1AE7uU0IH0to8jfQZ4EPcAfj3-bneWmNn9PivaOr9-SM/ofhetw2/public/values?alt=json"
 
-let shortStory = L.featureGroup();
-let longStory = L.featureGroup();
-let allLayers = L.featureGroup();
-let layers = {
-   "Shorter stories": shortStory,
-   "Longer stories": longStory
-}
-L.control.layers(null,layers).addTo(map)
-
 let Stamen_Watercolor = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}', {
 	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 	subdomains: 'abcd',
@@ -20,8 +11,6 @@ let Stamen_Watercolor = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/w
 	maxZoom: 16,
 	ext: 'jpg'
 });
-
-Stamen_Watercolor.addTo(map)
 
 fetch(url)
 	.then(response => {
@@ -33,8 +22,14 @@ fetch(url)
         }
 )
 
+Stamen_Watercolor.addTo(map)
+
+let shortStory = L.featureGroup();
+let longStory = L.featureGroup();
+let allLayers = L.featureGroup();
+
 let circleOptions = {
-  radius: 4,
+  radius: 8,
   fillColor: "magenta",
   color: "#000",
   weight: 1,
@@ -44,14 +39,14 @@ let circleOptions = {
 
 function addMarker(data){
   
-  if (data.story.length < 30){
+  if (data.story.length < 50){
     circleOptions.fillColor = "#618700"
-    shortStory.addLayer(L.circleMarker([data.lat,data.long]).bindPopup(`<h2>${data.location}</h2>${data.story}`))
+    shortStory.addLayer(L.circleMarker([data.lat,data.long], circleOptions).bindPopup(`<h2>${data.location}</h2>${data.story}`))
   }
   else
   {
     circleOptions.fillColor = "#9b0575"
-    longStory.addLayer(L.circleMarker([data.lat,data.long]).bindPopup(`<h2>${data.location}</h2>${data.story}`))
+    longStory.addLayer(L.circleMarker([data.lat,data.long], circleOptions).bindPopup(`<h2>${data.location}</h2>${data.story}`))
   }
     createButtons(data.lat,data.long,data.location)
     return data.timestamp;
@@ -110,4 +105,10 @@ function formatData(theData){
     let allLayers = L.featureGroup([shortStory,longStory]);
     map.fitBounds(allLayers.getBounds());
   }
+
+  let layers = {
+    "Shorter stories": shortStory,
+    "Longer stories": longStory
+ }
+ L.control.layers(null,layers).addTo(map)
 
